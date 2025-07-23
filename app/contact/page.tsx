@@ -33,24 +33,32 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Form submission - for now showing success message
-    // In production, this would send to your email service
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        eventType: '',
-        eventDate: '',
-        location: '',
-        budget: '',
-        message: ''
+      // Send to Formspree
+      const response = await fetch('https://formspree.io/f/mblkgqkz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          eventType: '',
+          eventDate: '',
+          location: '',
+          budget: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+      }
       
       // Reset status after 5 seconds
       setTimeout(() => setSubmitStatus('idle'), 5000);
