@@ -782,24 +782,16 @@ export default function HomePage() {
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-start mb-20">
-            <div>
-              <div className="text-sm text-grey70 tracking-wider mb-4">TESTIMONIALS</div>
-              <motion.h2 
-                className="text-4xl md:text-6xl font-bold text-white mb-8"
-                initial={{ opacity: 0, y: 30 }}
-                animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                WHAT MY CLIENTS SAY
-              </motion.h2>
-            </div>
-            <Link 
-              href="/testimonials"
-              className="inline-flex items-center text-white hover:text-purple55 transition-colors"
+          <div className="text-center mb-20">
+            <div className="text-sm text-grey70 tracking-wider mb-4">TESTIMONIALS</div>
+            <motion.h2 
+              className="text-4xl md:text-6xl font-bold text-white mb-8"
+              initial={{ opacity: 0, y: 30 }}
+              animate={testimonialsInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
-              View All Testimonials →
-            </Link>
+              WHAT MY CLIENTS SAY
+            </motion.h2>
           </div>
           
           <motion.div
