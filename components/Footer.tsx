@@ -126,17 +126,26 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 pt-8 border-t border-dark20 flex flex-col sm:flex-row justify-between items-center">
-          <p className="text-grey50 text-sm">
-            © {currentYear} Cameron Fitzsimmons Photography. All rights reserved.
-          </p>
-          <div className="mt-4 sm:mt-0 flex space-x-6 text-sm">
-            <a href="/privacy" className="text-grey50 hover:text-white transition-colors duration-300">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="text-grey50 hover:text-white transition-colors duration-300">
-              Terms of Service
-            </a>
+        <div className="mt-12 pt-8 border-t border-dark20">
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <p className="text-grey50 text-sm">
+              © {currentYear} Cameron Fitzsimmons Photography. All rights reserved.
+            </p>
+            <div className="mt-4 sm:mt-0 flex space-x-6 text-sm">
+              <a href="/privacy" className="text-grey50 hover:text-white transition-colors duration-300">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="text-grey50 hover:text-white transition-colors duration-300">
+                Terms of Service
+              </a>
+            </div>
+          </div>
+          
+          {/* Developer Credit */}
+          <div className="mt-4 text-center">
+            <p className="text-grey50 text-xs">
+              Created by <span className="text-purple55 hover:text-purple-400 transition-colors duration-300">James Schofield</span>
+            </p>
           </div>
         </div>
       </div>
