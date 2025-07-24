@@ -75,16 +75,9 @@ export default function ContactPage() {
     {
       icon: '📧',
       title: 'Email',
-      value: 'camfitz22@gmail.com',
-      link: 'mailto:camfitz22@gmail.com',
+      value: 'flickzwithfitz@outlook.com',
+      link: 'mailto:flickzwithfitz@outlook.com',
       description: 'Send me a detailed message'
-    },
-    {
-      icon: '📞',
-      title: 'Phone',
-      value: '(814) 232-4015',
-      link: 'tel:814-232-4015',
-      description: 'Call for immediate assistance'
     },
     {
       icon: '📍',
@@ -458,7 +451,7 @@ export default function ContactPage() {
                 <h3 className="text-white font-bold text-xl mb-4">Follow My Work</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="https://www.instagram.com/cameronnfitzsimmons/?utm_source=ig_web_button_share_sheet"
+                    href="https://www.instagram.com/flickzwithfitz/?utm_source=ig_web_button_share_sheet"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-12 h-12 bg-dark20 rounded-lg flex items-center justify-center text-grey50 hover:text-purple55 hover:bg-dark30 transition-all duration-300"

@@ -40,7 +40,7 @@ export default function Footer() {
             {/* Social Links */}
             <div className="flex space-x-4">
               <a 
-                href="https://www.instagram.com/cameronnfitzsimmons/?utm_source=ig_web_button_share_sheet"
+                href="https://www.instagram.com/flickzwithfitz/?utm_source=ig_web_button_share_sheet"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-dark20 rounded-full flex items-center justify-center text-grey50 hover:text-purple55 hover:bg-dark30 transition-all duration-300"
@@ -104,26 +104,14 @@ export default function Footer() {
                   </svg>
                 </div>
                 <a 
-                  href="mailto:camfitz22@gmail.com"
+                  href="mailto:flickzwithfitz@outlook.com"
                   className="text-grey70 hover:text-white transition-colors duration-300"
                 >
-                  camfitz22@gmail.com
+                  flickzwithfitz@outlook.com
                 </a>
               </div>
 
-              <div className="flex items-center space-x-3">
-                <div className="w-5 h-5 text-purple55">
-                  <svg fill="currentColor" viewBox="0 0 24 24">
-                    <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clipRule="evenodd"/>
-                  </svg>
-                </div>
-                <a 
-                  href="tel:+18142324015"
-                  className="text-grey70 hover:text-white transition-colors duration-300"
-                >
-                  (814) 232-4015
-                </a>
-              </div>
+              
 
               <div className="flex items-center space-x-3">
                 <div className="w-5 h-5 text-purple55">

@@ -211,9 +211,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 📞 Contact
 
 **Cameron Fitzsimmons - FlickzWithFitz**
-- Email: camfitz22@gmail.com
-- Phone: (814) 232-4015
-- Instagram: [@cameronnfitzsimmons](https://www.instagram.com/cameronnfitzsimmons/)
+- Email: flickzwithfitz@outlook.com
+- Instagram: [@flickzwithfitz](https://www.instagram.com/flickzwithfitz/?utm_source=ig_web_button_share_sheet)
 
 ## 🙏 Acknowledgments
 
