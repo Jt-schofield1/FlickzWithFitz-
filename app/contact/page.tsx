@@ -84,7 +84,7 @@ export default function ContactPage() {
       title: 'Location',
       value: about.location,
       link: '#',
-      description: 'Based in the Bay Area'
+      description: 'Available for local and destination shoots'
     },
     {
       icon: '💬',
