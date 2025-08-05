@@ -96,13 +96,13 @@ export default function ContactPage() {
   ];
 
   const eventTypes = [
-    'Portrait Session',
-    'Wedding Photography',
-    'Event Photography',
-    'Commercial Shoot',
-    'Landscape Photography',
-    'Family Photography',
-    'Corporate Headshots',
+    'Basic Wedding - $1,000',
+    'Classic Wedding - $2,000',
+    'Signature Wedding - $3,000',
+    'Full Story Wedding - $4,000',
+    'Mini Portrait Session - $200',
+    'Standard Portrait Session - $300',
+    'Premium Portrait Session - $400',
     'Other'
   ];
 
@@ -110,9 +110,8 @@ export default function ContactPage() {
     'Under $500',
     '$500 - $1,000',
     '$1,000 - $2,500',
-    '$2,500 - $5,000',
-    '$5,000 - $10,000',
-    'Over $10,000'
+    '$2,500 - $4,000',
+    '$4,000+'
   ];
 
   return (

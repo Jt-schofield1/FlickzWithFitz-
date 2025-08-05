@@ -36,7 +36,7 @@ export default function ServicesList({ services, showAll = true }: ServicesListP
         >
           {/* Popular Badge */}
           {service.popular && (
-            <div className="absolute -top-3 left-6">
+            <div className="absolute -top-8 left-6">
               <span className="bg-purple55 text-white text-xs font-semibold px-3 py-1 rounded-full">
                 Popular
               </span>

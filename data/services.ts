@@ -10,100 +10,123 @@ export interface Service {
 }
 
 export const services: Service[] = [
+  // Wedding Packages
   {
     id: '1',
-    title: 'Portrait Photography',
-    description: 'Professional portrait sessions that capture your unique personality and style in stunning detail.',
+    title: 'Basic Wedding',
+    description: 'Essential wedding day coverage to capture your special moments.',
     features: [
-      'Professional studio or outdoor setting',
-      '60-90 minute photo session',
-      '20+ edited high-resolution images',
-      'Personal style consultation',
-      'Online gallery for easy sharing'
+      'Wedding day coverage up to 8 hours',
+      'Up to 100 edited pictures',
+      'Online gallery delivery',
+      'High-resolution downloads'
     ],
-    price: 'Contact for pricing',
-    duration: '1.5 hours',
-    icon: '👤',
-    popular: true
+    price: '$1,000',
+    duration: 'Up to 8 hours',
+    icon: '💍',
+    popular: false
   },
   {
     id: '2',
-    title: 'Wedding Photography',
-    description: 'Complete wedding day coverage to preserve every precious moment of your special day.',
+    title: 'Classic Wedding',
+    description: 'Comprehensive wedding package with engagement session and rehearsal coverage.',
     features: [
-      'Full day wedding coverage (8-10 hours)',
-      'Engagement session included',
-      '500+ edited high-resolution images',
-      'Online gallery with download rights',
-      'USB drive with all photos',
-      'Timeline planning consultation'
+      'Engagement session up to 30 minutes',
+      'Rehearsal coverage up to 2 hours',
+      'Wedding day coverage up to 8 hours',
+      'Up to 200 edited pictures',
+      'Preliminary consultation',
+      'Personalized timeline customization'
     ],
-    price: 'Contact for pricing',
-    duration: 'Full day',
+    price: '$2,000',
+    duration: 'Multi-day coverage',
     icon: '💍',
     popular: true
   },
   {
     id: '3',
-    title: 'Event Photography',
-    description: 'Professional coverage of corporate events, parties, and special celebrations.',
+    title: 'Signature Wedding',
+    description: 'Premium wedding experience with extended coverage and consultation.',
     features: [
-      'Event coverage (2-6 hours)',
-      '100+ edited high-resolution images',
-      'Quick turnaround (24-48 hours)',
-      'Online gallery for attendees',
-      'Social media ready formats'
+      'Engagement session up to 1 hour',
+      'Rehearsal coverage up to 2 hours',
+      'Wedding day coverage up to 10 hours',
+      'Up to 300 edited pictures',
+      'Preliminary consultation',
+      'Personalized timeline customization'
     ],
-    price: 'Contact for pricing',
-    duration: '2-6 hours',
-    icon: '🎉',
+    price: '$3,000',
+    duration: 'Extended coverage',
+    icon: '💍',
     popular: true
   },
   {
     id: '4',
-    title: 'Commercial Photography',
-    description: 'Professional imagery for businesses, products, and marketing materials.',
+    title: 'Full Story Wedding',
+    description: 'Complete wedding documentation from start to finish with full gallery access.',
     features: [
-      'Product or business photography',
-      'Multiple setup variations',
-      '50+ edited high-resolution images',
-      'Commercial usage rights',
-      'Various formats and sizes',
-      'Brand consultation included'
+      'Engagement session up to 1 hour',
+      'Rehearsal coverage up to 3 hours',
+      'Wedding day coverage up to 12 hours',
+      '400+ edited pictures',
+      'Access to full gallery',
+      'Preliminary consultation',
+      'Personalized timeline customization'
     ],
-    price: 'Starting at $799',
-    duration: '2-4 hours',
-    icon: '💼'
+    price: '$4,000',
+    duration: 'Complete coverage',
+    icon: '💍',
+    popular: false
   },
+  // Portrait Packages
   {
     id: '5',
-    title: 'Landscape Photography',
-    description: 'Stunning landscape and nature photography for personal or commercial use.',
+    title: 'Mini Portrait Session',
+    description: 'Quick and affordable portrait session perfect for headshots and social media.',
     features: [
-      'Location scouting included',
-      'Golden hour shooting',
-      '30+ edited high-resolution images',
-      'Print-ready formats',
-      'Weather contingency planning'
+      'Up to 30 minutes session time',
+      '1 outfit and 1 location',
+      '5+ edited pictures delivered online',
+      'Great for headshots and social media',
+      'High-resolution downloads included'
     ],
-    price: 'Starting at $399',
-    duration: '2-3 hours',
-    icon: '🏔️'
+    price: '$200',
+    duration: '30 minutes',
+    icon: '👤',
+    popular: false
   },
   {
     id: '6',
-    title: 'Photo Editing Services',
-    description: 'Professional post-processing and retouching for your existing photos.',
+    title: 'Standard Portrait Session',
+    description: 'Professional portrait session ideal for couples and personal branding.',
     features: [
-      'Color correction and enhancement',
-      'Professional retouching',
-      'Background removal/replacement',
-      'Batch processing available',
-      '48-hour turnaround'
+      'Up to 1 hour session time',
+      '1 outfit and 1 location',
+      '10+ edited pictures delivered online',
+      'Ideal for couples and personal branding',
+      'Online gallery with high-resolution downloads'
     ],
-    price: 'Starting at $25/photo',
-    duration: '1-2 days',
-    icon: '🎨'
+    price: '$300',
+    duration: '1 hour',
+    icon: '👤',
+    popular: true
+  },
+  {
+    id: '7',
+    title: 'Premium Portrait Session',
+    description: 'Comprehensive portrait experience with multiple options and full gallery access.',
+    features: [
+      'Up to 90 minutes session time',
+      'Option of 2 outfits and 2 locations',
+      '20+ edited pictures delivered',
+      'Access to full gallery of all pictures',
+      'Preliminary consultation included',
+      'High-resolution downloads included'
+    ],
+    price: '$400',
+    duration: '90 minutes',
+    icon: '👤',
+    popular: false
   }
 ];
 
