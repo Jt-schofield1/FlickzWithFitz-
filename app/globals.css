@@ -33,6 +33,37 @@ body {
   font-family: 'Poppins', system-ui, sans-serif;
   background-color: var(--Dark-03);
   color: var(--Absolute-White);
+  /* Ensure proper mobile scrolling */
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+/* Mobile touch scrolling fix */
+@media (max-width: 768px) {
+  body {
+    /* Ensure scrolling is never disabled on mobile */
+    overflow-y: auto !important;
+    height: auto !important;
+    position: relative !important;
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Fix for iOS scroll issues */
+    overscroll-behavior: none;
+  }
+  
+  /* Ensure all sections are visible on mobile */
+  section {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: auto !important;
+  }
+  
+  /* Force motion components to be visible on mobile */
+  [data-framer-component-type] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 a {

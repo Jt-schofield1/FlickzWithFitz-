@@ -7,10 +7,12 @@ import ServicesList from '@/components/ServicesList';
 import Link from 'next/link';
 
 export default function ServicesPage() {
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.3 });
-  const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [processRef, processInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [packagesRef, packagesInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.05 });
+  const [processRef, processInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [weddingPackagesRef, weddingPackagesInView] = useInView({ triggerOnce: true, threshold: 0.05 });
+  const [portraitPackagesRef, portraitPackagesInView] = useInView({ triggerOnce: true, threshold: 0.05 });
+  const [faqRef, faqInView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   const process = [
     {
@@ -307,10 +309,10 @@ export default function ServicesPage() {
 
       {/* Wedding Packages Section */}
       <motion.section
-        ref={packagesRef}
+        ref={weddingPackagesRef}
         className="py-20 bg-dark06"
         initial={{ opacity: 0, y: 50 }}
-        animate={packagesInView ? { opacity: 1, y: 0 } : {}}
+        animate={weddingPackagesInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -331,7 +333,7 @@ export default function ServicesPage() {
                   pkg.popular ? 'ring-2 ring-purple55' : ''
                 }`}
                 initial={{ opacity: 0, y: 30 }}
-                animate={packagesInView ? { opacity: 1, y: 0 } : {}}
+                animate={weddingPackagesInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
               >
                 {pkg.popular && (
@@ -380,14 +382,20 @@ export default function ServicesPage() {
           </div>
 
           {/* Portrait Packages Section */}
-          <div className="text-center mb-16">
+          <motion.div 
+            ref={portraitPackagesRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={portraitPackagesInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Portrait Session Packages
             </h2>
             <p className="text-lg text-grey70 max-w-2xl mx-auto">
               Professional portrait sessions for individuals, couples, and families
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {portraitPackages.map((pkg, index) => (
@@ -397,8 +405,8 @@ export default function ServicesPage() {
                   pkg.popular ? 'ring-2 ring-purple55' : ''
                 }`}
                 initial={{ opacity: 0, y: 30 }}
-                animate={packagesInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: (index + 4) * 0.1 }}
+                animate={portraitPackagesInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: (index * 0.1) + 0.4 }}
               >
                 {pkg.popular && (
                   <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-10">
@@ -447,7 +455,13 @@ export default function ServicesPage() {
       </motion.section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-dark03">
+      <motion.section 
+        ref={faqRef}
+        className="py-20 bg-dark03"
+        initial={{ opacity: 0, y: 50 }}
+        animate={faqInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -485,7 +499,7 @@ export default function ServicesPage() {
                 key={index}
                 className="bg-dark12 rounded-lg p-6"
                 initial={{ opacity: 0, y: 20 }}
-                animate={packagesInView ? { opacity: 1, y: 0 } : {}}
+                animate={faqInView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
               >
                 <h3 className="text-white font-bold text-lg mb-3">{faq.question}</h3>
@@ -494,7 +508,7 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-purple55 to-purple55/80">
