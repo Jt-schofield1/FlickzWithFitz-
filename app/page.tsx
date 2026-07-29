@@ -19,7 +19,9 @@ export default function HomePage() {
     <>
       {/* ============================================================ hero === */}
       <section className="px-5 pt-[30px] lg:px-16 lg:pt-[120px]">
-        <p className="eyebrow anim-rise" style={{ animationDelay: '.34s' }}>
+        {/* Delays are measured against the intro curtain clearing at ~.65s —
+            anything earlier reveals behind it and reads as no animation. */}
+        <p className="eyebrow anim-rise" style={{ animationDelay: '.5s' }}>
           <span className="lg:hidden">SELECTED WORK</span>
           <span className="hidden lg:inline">SELECTED WORK — ERIE, PA</span>
         </p>
@@ -29,12 +31,12 @@ export default function HomePage() {
           style={{ letterSpacing: '-.025em', textWrap: 'balance' }}
         >
           <span className="block text-[46px] leading-[.98] lg:hidden">
-            <span className="clip-line anim-clipup" style={{ animationDelay: '.4s' }}>
+            <span className="clip-line anim-clipup" style={{ animationDelay: '.56s' }}>
               Quiet pictures
             </span>
             <span
               className="clip-line anim-clipup italic"
-              style={{ animationDelay: '.54s' }}
+              style={{ animationDelay: '.7s' }}
             >
               of loud days.
             </span>
@@ -47,12 +49,12 @@ export default function HomePage() {
               letterSpacing: '-.028em',
             }}
           >
-            <span className="clip-line anim-clipup" style={{ animationDelay: '.44s' }}>
+            <span className="clip-line anim-clipup" style={{ animationDelay: '.6s' }}>
               Quiet pictures of
             </span>
             <span
               className="clip-line anim-clipup italic"
-              style={{ animationDelay: '.58s' }}
+              style={{ animationDelay: '.74s' }}
             >
               very loud days.
             </span>
@@ -64,7 +66,7 @@ export default function HomePage() {
           style={{
             font: '400 13px/1.6 var(--font-sans)',
             color: 'rgba(0,0,0,.62)',
-            animationDelay: '.78s',
+            animationDelay: '.94s',
           }}
         >
           {HOME_LEDE_MOBILE}
@@ -74,7 +76,7 @@ export default function HomePage() {
           className="anim-rise mt-[46px] hidden items-end justify-between pb-5 lg:flex"
           style={{
             borderBottom: '1px solid rgba(0,0,0,.13)',
-            animationDelay: '.78s',
+            animationDelay: '.94s',
           }}
         >
           <p

@@ -17,7 +17,7 @@ export default function PortfolioPage() {
         <h1 className="display mt-3 overflow-hidden text-[42px] leading-none tracking-[-.025em] lg:mt-[22px] lg:text-[clamp(52px,5.6vw,84px)] lg:tracking-[-.028em]">
           <span
             className="clip-line anim-clipup"
-            style={{ animationDelay: '.1s', animationDuration: '1s' }}
+            style={{ animationDelay: '.5s', animationDuration: '1s' }}
           >
             The whole <span className="italic">archive.</span>
           </span>

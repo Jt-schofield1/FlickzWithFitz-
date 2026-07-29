@@ -32,7 +32,7 @@ export default function Sidebar() {
             fontSize: 40,
             lineHeight: 0.94,
             letterSpacing: '-.02em',
-            animationDelay: '.3s',
+            animationDelay: '.55s',
           }}
         >
           Flickz
@@ -44,7 +44,7 @@ export default function Sidebar() {
 
         <nav
           className="anim-rise mt-[38px] flex flex-col"
-          style={{ animationDelay: '.38s' }}
+          style={{ animationDelay: '.63s' }}
           aria-label="Primary"
         >
           {NAV.map((item, i) => {
@@ -72,7 +72,7 @@ export default function Sidebar() {
             font: '400 13.5px/1.65 var(--font-sans)',
             color: 'rgba(0,0,0,.62)',
             textWrap: 'pretty',
-            animationDelay: '.46s',
+            animationDelay: '.71s',
           }}
         >
           {SIDEBAR_BIO}
@@ -85,7 +85,7 @@ export default function Sidebar() {
           font: '400 10px/1.9 var(--font-mono)',
           letterSpacing: '.14em',
           color: 'rgba(0,0,0,.45)',
-          animationDelay: '.54s',
+          animationDelay: '.79s',
         }}
       >
         <div className="flex items-center gap-2 text-black">

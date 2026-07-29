@@ -411,5 +411,10 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    /* Zeroing duration alone is not enough: the reveals fill `both`, so during
+       their delay the headline still sat at `clip-path: inset(100%)` — clipped
+       to nothing. The delay has to go too or content starts out invisible. */
+    animation-delay: 0s !important;
+    transition-delay: 0s !important;
   }
 }

@@ -22,13 +22,13 @@ export default function AboutPage() {
         <h1 className="display mt-3 overflow-hidden text-[40px] leading-none tracking-[-.025em] lg:mt-[22px] lg:text-[clamp(50px,5.4vw,82px)]">
           <span
             className="clip-line anim-clipup"
-            style={{ animationDelay: '.1s', animationDuration: '1s' }}
+            style={{ animationDelay: '.5s', animationDuration: '1s' }}
           >
             Ten years of
           </span>
           <span
             className="clip-line anim-clipup italic"
-            style={{ animationDelay: '.26s', animationDuration: '1s' }}
+            style={{ animationDelay: '.64s', animationDuration: '1s' }}
           >
             slowing time down.
           </span>

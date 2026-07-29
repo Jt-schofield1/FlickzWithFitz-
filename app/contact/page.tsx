@@ -20,13 +20,13 @@ export default function ContactPage() {
         <h1 className="display mt-3 overflow-hidden text-[42px] leading-none tracking-[-.025em] lg:mt-[22px] lg:text-[clamp(48px,5vw,76px)] lg:tracking-[-.028em]">
           <span
             className="clip-line anim-clipup"
-            style={{ animationDelay: '.1s', animationDuration: '1s' }}
+            style={{ animationDelay: '.5s', animationDuration: '1s' }}
           >
             Tell me about
           </span>
           <span
             className="clip-line anim-clipup italic"
-            style={{ animationDelay: '.26s', animationDuration: '1s' }}
+            style={{ animationDelay: '.64s', animationDuration: '1s' }}
           >
             the day.
           </span>
@@ -42,10 +42,13 @@ export default function ContactPage() {
         <ContactForm />
       </div>
 
-      {/* Sticky and capped: a full-height image stretched absurdly beside a long
-          form, and default centring cut the couple's faces off. */}
+      {/* The handoff pinned this column (`sticky; top: 0`) so it would track a
+          long form. In practice the page scrolls barely 400px, so it pinned from
+          the first pixel and read as frozen — it scrolls with the page instead.
+          Still capped rather than full-height: stretching it looked absurd, and
+          default centring cut the couple's faces off. */}
       <div
-        className="sticky top-0 hidden self-start overflow-hidden bg-black lg:block"
+        className="hidden self-start overflow-hidden bg-black lg:block"
         style={{ height: 'min(100vh, 620px)' }}
       >
         <Photo
