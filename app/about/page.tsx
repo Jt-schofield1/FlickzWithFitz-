@@ -1,300 +1,204 @@
-'use client';
+import type { Metadata } from 'next';
+import CtaPanel from '@/components/CtaPanel';
+import Photo from '@/components/Photo';
+import { Parallax } from '@/components/Scroll';
+import { HOW_I_WORK, STATS, WHAT_I_SHOOT } from '@/data/content';
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { about } from '@/data/about';
-import Image from 'next/image';
+export const metadata: Metadata = {
+  title: 'About',
+  description:
+    'Cameron Fitzsimmons — ten years photographing weddings, portraits and everything in between in Erie, Pennsylvania.',
+  alternates: { canonical: '/about' },
+};
+
+const RULE = '1px solid rgba(0,0,0,.15)';
+const HAIRLINE = '1px solid rgba(0,0,0,.14)';
 
 export default function AboutPage() {
-  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.3 });
-  const [bioRef, bioInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [skillsRef, skillsInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-  const [experienceRef, experienceInView] = useInView({ triggerOnce: true, threshold: 0.2 });
-
-  const skills = [
-    { name: 'Portrait Photography', level: 95, icon: '👤', rating: 5 },
-    { name: 'Wedding Photography', level: 92, icon: '💍', rating: 5 },
-    { name: 'Event Photography', level: 88, icon: '🎉', rating: 4 },
-    { name: 'Landscape Photography', level: 85, icon: '🏔️', rating: 4 },
-    { name: 'Photo Editing', level: 90, icon: '🎨', rating: 5 },
-    { name: 'Adobe Lightroom', level: 95, icon: '📸', rating: 5 },
-    { name: 'Adobe Photoshop', level: 88, icon: '🖼️', rating: 4 },
-    { name: 'Studio Lighting', level: 92, icon: '💡', rating: 5 },
-  ];
-
-  const experience = [
-    {
-      year: '2016 - Present',
-      title: 'Professional Photographer',
-      company: 'FlickzWithFitz',
-      description: 'Full-service photography business specializing in portraits, weddings, and events.',
-    },
-    {
-      year: '2012 - 2016',
-      title: 'High School Photographer',
-      company: 'Local High School',
-      description: 'Yearbook photography, senior pictures, and school event coverage.',
-    },
-    {
-      year: '2010 - 2012',
-      title: 'Photography Hobbyist',
-      company: 'Personal',
-      description: 'Developed passion for photography, learning fundamentals and experimenting with different styles.',
-    },
-  ];
-
-
-
   return (
-    <div className="pt-16">
-      {/* Hero Section */}
-      <motion.section
-        ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-dark03 via-dark06 to-dark08 overflow-hidden"
-        initial={{ opacity: 0 }}
-        animate={heroInView ? { opacity: 1 } : {}}
-        transition={{ duration: 1 }}
-      >
-        {/* Purple Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-300/40 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-gradient-to-r from-purple-500/20 to-purple-300/25 rounded-full blur-3xl"></div>
-        </div>
+    <>
+      <div className="px-5 pt-[26px] lg:px-16 lg:pt-[110px]">
+        <p className="eyebrow">ABOUT — CAMERON FITZSIMMONS</p>
+        <h1 className="display mt-3 overflow-hidden text-[40px] leading-none tracking-[-.025em] lg:mt-[22px] lg:text-[clamp(50px,5.4vw,82px)]">
+          <span
+            className="clip-line anim-clipup"
+            style={{ animationDelay: '.1s', animationDuration: '1s' }}
+          >
+            Ten years of
+          </span>
+          <span
+            className="clip-line anim-clipup italic"
+            style={{ animationDelay: '.26s', animationDuration: '1s' }}
+          >
+            slowing time down.
+          </span>
+        </h1>
+      </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none">
-          {[...Array(8)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-purple-500/60 rounded-full"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -100, 0],
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 8 + Math.random() * 4,
-                repeat: Infinity,
-                delay: Math.random() * 5,
-                ease: "easeInOut"
-              }}
+      <div
+        className="mt-[26px] grid items-start gap-11 px-5 lg:mt-16 lg:px-16"
+        style={{ gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,330px),1fr))' }}
+      >
+        <figure className="relative overflow-hidden" style={{ aspectRatio: '4/5' }}>
+          <Photo
+            name="cameron"
+            alt="Cameron Fitzsimmons"
+            sizes="(min-width:1024px) 40vw, 100vw"
+            priority
+            className="anim-scz h-full w-full object-cover"
+          />
+          <figcaption
+            className="absolute bottom-0 left-0 bg-white px-[13px] py-[11px] font-mono text-[9px] lg:px-4 lg:py-[14px] lg:text-[9.5px]"
+            style={{ letterSpacing: '.14em', color: 'rgba(0,0,0,.5)' }}
+          >
+            CAMERON FITZSIMMONS — ERIE, PA
+          </figcaption>
+        </figure>
+
+        <div className="pt-6 lg:pt-[6px]">
+          <p
+            className="display text-[22px] lg:text-[29px]"
+            style={{ lineHeight: 1.4, letterSpacing: '-.01em', textWrap: 'pretty' }}
+          >
+            I&rsquo;m Cameron Fitzsimmons, the photographer behind FlickzWithFitz, based in
+            Erie, PA.
+          </p>
+          <p
+            className="mt-[18px] text-[13.5px] leading-[1.7] lg:mt-[26px] lg:text-[15px] lg:leading-[1.75]"
+            style={{ color: 'rgba(0,0,0,.66)', textWrap: 'pretty' }}
+          >
+            Ten years behind the lens, and the job hasn&rsquo;t changed: catch what&rsquo;s
+            actually happening, and stay out of its way while it does. Photography has always
+            been my way of slowing things down. Life moves fast — a good photo holds on to a
+            single second forever.
+          </p>
+          <p
+            className="mt-4 text-[13.5px] leading-[1.7] lg:mt-5 lg:text-[15px] lg:leading-[1.75]"
+            style={{ color: 'rgba(0,0,0,.66)', textWrap: 'pretty' }}
+          >
+            Milestone, wedding, updated portrait, or just an honest moment worth keeping —
+            I&rsquo;m here to turn real life into something lasting. No stiff posing. No fake
+            laughing at nothing.
+          </p>
+
+          <dl
+            className="mt-[30px] grid grid-cols-2 lg:mt-11"
+            style={{ borderTop: RULE }}
+          >
+            {STATS.map((s, i) => (
+              <div
+                key={s.label}
+                className={
+                  i % 2 === 0
+                    ? 'py-4 pr-4 lg:py-5 lg:pr-5'
+                    : 'py-4 pl-[18px] lg:py-5 lg:pl-6'
+                }
+                style={{
+                  borderBottom: RULE,
+                  borderRight: i % 2 === 0 ? RULE : undefined,
+                }}
+              >
+                <dd className="display text-[34px] leading-none lg:text-[44px]">
+                  {s.value}
+                </dd>
+                <dt
+                  className="mt-[5px] font-mono text-[9px] lg:mt-[6px] lg:text-[9.5px]"
+                  style={{ letterSpacing: '.14em', color: 'rgba(0,0,0,.45)' }}
+                >
+                  {s.label}
+                </dt>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
+
+      <div className="mt-[34px] lg:mt-[130px] lg:px-16">
+        <div className="hidden lg:block">
+          <Parallax aspect="21/9">
+            <Photo
+              name="DSC04640"
+              alt="Silhouette beneath the trees"
+              sizes="(min-width:1024px) calc(100vw - 450px), 100vw"
+              className="h-full w-full object-cover"
             />
+          </Parallax>
+        </div>
+        <div className="overflow-hidden lg:hidden" style={{ aspectRatio: '3/2' }}>
+          <Photo
+            name="DSC04640"
+            alt="Silhouette beneath the trees"
+            sizes="100vw"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+
+      <section className="mt-8 px-5 lg:mt-[120px] lg:px-16">
+        <h2 className="eyebrow pb-[14px] lg:pb-6">HOW I WORK</h2>
+        <div>
+          {HOW_I_WORK.map((step, i) => (
+            <div
+              key={step.num}
+              className="grid gap-6 py-[14px] lg:grid-cols-[1fr_auto] lg:py-[22px]"
+              style={{
+                borderTop: HAIRLINE,
+                borderBottom: i === HOW_I_WORK.length - 1 ? HAIRLINE : undefined,
+              }}
+            >
+              <div>
+                <div className="flex items-baseline justify-between lg:block">
+                  <h3 className="display text-2xl lg:text-[31px]">{step.title}</h3>
+                  <span
+                    className="font-mono text-[9px] lg:hidden"
+                    style={{ color: 'rgba(0,0,0,.4)' }}
+                  >
+                    {step.num}
+                  </span>
+                </div>
+                <p
+                  className="mt-[5px] max-w-[520px] text-[12.5px] leading-[1.65] lg:mt-[6px] lg:text-[13px]"
+                  style={{ color: 'rgba(0,0,0,.58)', textWrap: 'pretty' }}
+                >
+                  <span className="lg:hidden">{step.bodyShort}</span>
+                  <span className="hidden lg:inline">{step.body}</span>
+                </p>
+              </div>
+              <span
+                className="hidden self-center font-mono text-[10px] lg:block"
+                style={{ letterSpacing: '.16em', color: 'rgba(0,0,0,.4)' }}
+              >
+                {step.num}
+              </span>
+            </div>
           ))}
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            {/* Text Content */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                About{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple55 to-purple90">
-                  Cameron
-                </span>
-              </h1>
-              <p className="text-xl text-grey70 mb-8 leading-relaxed">
-                Passionate photographer dedicated to capturing life's most precious moments 
-                with artistic vision and technical excellence.
-              </p>
-              <div className="grid grid-cols-3 gap-4 sm:gap-8">
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-purple55 mb-2">10+</div>
-                  <div className="text-grey70 text-sm sm:text-base">Years Experience</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-purple55 mb-2">100+</div>
-                  <div className="text-grey70 text-sm sm:text-base">Projects Completed</div>
-                </div>
-                <div>
-                  <div className="text-2xl sm:text-3xl font-bold text-purple55 mb-2">50+</div>
-                  <div className="text-grey70 text-sm sm:text-base">Happy Clients</div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Profile Image */}
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, x: 50 }}
-              animate={heroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <div className="relative w-full h-96 lg:h-[500px] rounded-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-purple55/20 to-transparent z-10"></div>
-                <Image
-                  src="/photos/image0 (1).jpeg"
-                  alt="Cameron Fitzsimmons - Professional Photographer"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Biography Section */}
-      <motion.section
-        ref={bioRef}
-        className="py-20 bg-gradient-to-b from-dark06 via-dark06 to-dark03 relative overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        animate={bioInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Purple Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 right-20 w-64 h-64 bg-purple-500/25 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 left-20 w-80 h-80 bg-purple-300/35 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-40 left-1/2 transform -translate-x-1/2 w-[1200px] h-[600px] bg-gradient-to-b from-purple-300/12 via-purple-500/8 to-purple-300/15 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-32 right-10 w-[500px] h-[500px] bg-gradient-to-t from-purple-500/12 to-purple-300/8 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-24 left-10 w-[400px] h-[400px] bg-purple-300/10 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-60 left-0 right-0 h-[800px] bg-gradient-to-b from-transparent via-purple-500/5 to-purple-300/8 blur-xl"></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">My Story</h2>
-            <p className="text-lg text-grey70">The journey that led me to photography</p>
-          </div>
-          
-          <div className="prose prose-lg prose-invert max-w-none">
-            <div className="text-grey70 text-base sm:text-lg leading-relaxed mb-6 space-y-4">
-              {about.bio.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
-            </div>
-            <p className="text-grey70 text-base sm:text-lg leading-relaxed mb-6">
-              Based in {about.location}, I've had the privilege of working with clients from all walks of life, 
-              each bringing their unique story to be captured. My approach combines technical expertise with 
-              genuine human connection, ensuring that every photograph tells an authentic story.
-            </p>
-            <p className="text-grey70 text-base sm:text-lg leading-relaxed">
-              When I'm not behind the camera, you can find me exploring new locations for inspiration, 
-              experimenting with different lighting techniques, or mentoring aspiring photographers. 
-              I believe that great photography is not just about capturing moments, but about preserving 
-              emotions and memories that will be cherished for generations.
-            </p>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Skills Section */}
-      <motion.section
-        ref={skillsRef}
-        className="py-20 bg-gradient-to-b from-dark03 via-dark03 to-dark06 relative overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        animate={skillsInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Purple Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[1000px] h-[200px] bg-gradient-to-b from-purple-300/15 via-purple-500/8 to-transparent rounded-full blur-3xl"></div>
-          <div className="absolute top-1/4 left-10 w-96 h-96 bg-gradient-to-r from-purple-500/20 to-purple-300/25 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-10 w-80 h-80 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-500"></div>
-          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-[700px] h-[300px] bg-gradient-to-b from-purple-300/10 to-transparent rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Skills & Expertise</h2>
-            <p className="text-lg text-grey70">Professional competencies and technical skills</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill.name}
-                className="bg-dark12 p-6 rounded-lg hover:bg-dark20 transition-colors duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                animate={skillsInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <div className="flex items-center">
-                  <div className="text-4xl mr-6">{skill.icon}</div>
-                  <div className="flex-1">
-                    <h3 className="text-white font-semibold text-xl">{skill.name}</h3>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Experience Section */}
-      <motion.section
-        ref={experienceRef}
-        className="py-20 bg-dark06 relative overflow-hidden"
-        initial={{ opacity: 0, y: 50 }}
-        animate={experienceInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
-      >
-        {/* Purple Background Effects */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-purple-300/35 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-purple-500/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">My Journey</h2>
-            <p className="text-lg text-grey70">Professional experience and growth</p>
-          </div>
-          
-          {/* Experience Timeline */}
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-8">
-              {experience.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className="relative pl-8 border-l-2 border-purple55"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={experienceInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <div className="absolute w-4 h-4 bg-purple55 rounded-full -left-2 top-0"></div>
-                  <div className="text-purple90 text-sm font-semibold mb-1">{exp.year}</div>
-                  <h3 className="text-white text-xl font-bold mb-1">{exp.title}</h3>
-                  <div className="text-grey70 font-semibold mb-2">{exp.company}</div>
-                  <p className="text-grey70">{exp.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Contact CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple55 to-purple55/80">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Let's Work Together
-          </h2>
-          <p className="text-xl text-purple90 mb-8 max-w-2xl mx-auto">
-            Ready to capture your special moments? I'd love to hear about your project and bring your vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-lg hover:bg-white hover:!text-purple-700 transition-all duration-300"
-            >
-              Get In Touch
-            </a>
-            <a
-              href="/portfolio"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-semibold text-lg rounded-lg hover:bg-white hover:!text-purple-700 transition-all duration-300"
-            >
-              View My Work
-            </a>
-          </div>
-        </div>
       </section>
-    </div>
+
+      <section className="mt-10 hidden px-16 lg:block">
+        <h2 className="eyebrow pb-6">WHAT I SHOOT</h2>
+        <ul className="flex flex-wrap gap-[9px]">
+          {WHAT_I_SHOOT.map((tag) => (
+            <li
+              key={tag}
+              className="px-[17px] py-[10px] font-mono text-[10px]"
+              style={{
+                border: '1px solid rgba(0,0,0,.28)',
+                letterSpacing: '.14em',
+              }}
+            >
+              {tag}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <CtaPanel
+        lines={['Come and say hello.', 'I’d like to hear about it.']}
+        secondary={{ href: '/portfolio', label: 'SEE THE WORK →' }}
+        variant="statement"
+        footer="desktop-only"
+      />
+    </>
   );
-} 
+}

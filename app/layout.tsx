@@ -1,77 +1,131 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Archivo, Bodoni_Moda, Space_Mono } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import Intro from '@/components/Intro';
+import { LightboxProvider } from '@/components/Lightbox';
+import { MobileTabBar, MobileTopBar } from '@/components/MobileChrome';
+import PageTransition from '@/components/PageTransition';
+import Sidebar from '@/components/Sidebar';
+import { SITE } from '@/data/content';
+
+const bodoni = Bodoni_Moda({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-bodoni',
+});
+
+const archivo = Archivo({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  display: 'swap',
+  variable: '--font-archivo',
+});
+
+const spaceMono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-space-mono',
+});
+
+const description =
+  'Wedding and portrait photography in Erie, Pennsylvania. Cameron Fitzsimmons shoots honestly — no stiff posing, no fake laughing at nothing. Booking 2026 — 2027.';
+
+const title = 'FlickzWithFitz — Wedding & Portrait Photography in Erie, PA';
 
 export const metadata: Metadata = {
-  title: {
-    default: 'FlickzWithFitz | Cameron Fitzsimmons Photography',
-    template: '%s | FlickzWithFitz',
+  metadataBase: new URL(SITE.url),
+  title: { default: title, template: '%s | FlickzWithFitz' },
+  description,
+  keywords: [
+    'wedding photographer Erie PA',
+    'portrait photographer Erie PA',
+    'Erie Pennsylvania photography',
+    'Cameron Fitzsimmons',
+    'FlickzWithFitz',
+  ],
+  authors: [{ name: SITE.photographer }],
+  creator: SITE.photographer,
+  alternates: { canonical: '/' },
+  manifest: '/site.webmanifest',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    apple: '/apple-touch-icon.png',
   },
-  description: 'FlickzWithFitz - Professional photographer Cameron Fitzsimmons based in Erie, PA. Specializing in authentic, timeless photography for weddings, portraits, events, and more.',
-  keywords: ['photographer', 'photography', 'portraits', 'landscape', 'events', 'professional photography', 'Cameron Fitzsimmons', 'FlickzWithFitz', 'Erie PA'],
-  authors: [{ name: 'Cameron Fitzsimmons' }],
-  creator: 'Cameron Fitzsimmons',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://flickzwithfitz.com',
-    siteName: 'FlickzWithFitz Photography',
-    title: 'FlickzWithFitz | Cameron Fitzsimmons Photography',
-    description: 'FlickzWithFitz - Professional photographer Cameron Fitzsimmons based in Erie, PA. Specializing in authentic, timeless photography.',
+    url: SITE.url,
+    siteName: 'FlickzWithFitz',
+    title,
+    description,
     images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'FlickzWithFitz Photography',
-      },
+      { url: '/photos/DSC01420.jpg', width: 1400, height: 933, alt: 'Lakeside ceremony' },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FlickzWithFitz | Cameron Fitzsimmons Photography',
-    description: 'FlickzWithFitz - Professional photographer Cameron Fitzsimmons based in Erie, PA. Specializing in authentic, timeless photography.',
-    images: ['/og-image.jpg'],
+    title,
+    description,
+    images: ['/photos/DSC01420.jpg'],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'verification_token_here',
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${SITE.url}/#business`,
+  name: SITE.name,
+  image: `${SITE.url}/photos/DSC01420.jpg`,
+  url: SITE.url,
+  email: SITE.email,
+  description,
+  founder: { '@type': 'Person', name: SITE.photographer },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Erie',
+    addressRegion: 'PA',
+    addressCountry: 'US',
+  },
+  sameAs: [SITE.instagram],
+  priceRange: '$200 — $4,000',
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-      </head>
-      <body className="bg-dark03 text-white antialiased">
-        <div className="min-h-screen flex flex-col">
-          <Navbar />
-          <main className="flex-1">
-            {children}
+    <html lang="en" className={`${bodoni.variable} ${archivo.variable} ${spaceMono.variable}`}>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <LightboxProvider>
+          <Intro />
+          <MobileTopBar />
+          <Sidebar />
+          <main className="min-h-screen lg:ml-[322px]">
+            <PageTransition>{children}</PageTransition>
+            {/* Keeps the fixed tab bar from covering the end of every page. */}
+            <div className="h-[74px] lg:hidden" />
           </main>
-          <Footer />
-        </div>
+          <MobileTabBar />
+        </LightboxProvider>
       </body>
     </html>
   );
-} 
+}

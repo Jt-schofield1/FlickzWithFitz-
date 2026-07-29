@@ -1,226 +1,64 @@
-# FlickzWithFitz - Photography Portfolio
+# FlickzWithFitz
 
-A modern, responsive photography portfolio website for professional photographer Cameron Fitzsimmons, built with Next.js 14 and featuring stunning animations, optimized image galleries, and a seamless user experience.
+Wedding and portrait photography site for Cameron Fitzsimmons, Erie PA — a rebuild of
+the original Next.js site against the 2026 rebrand design handoff.
 
-## 🌟 Features
+Art direction is strictly black-and-white chrome; the photography is the only colour on
+the page. Motion is continuous: a page-load reveal, scroll-linked parallax and scale, a
+pinned `mix-blend-mode: difference` statement, an infinite marquee, a cursor-following
+preview, and crossfaded route transitions.
 
-### ✨ Core Features
-- **Responsive Design** - Optimized for all devices (mobile, tablet, desktop)
-- **Modern UI/UX** - Clean, professional design with smooth animations
-- **Image Gallery** - Optimized photo display with lightbox functionality
-- **Service Showcase** - Detailed photography service offerings
-- **Contact System** - Interactive contact forms and information
-- **Performance Optimized** - Fast loading with Next.js Image optimization
+Next.js 14 (App Router) · React 18 · Tailwind CSS 4 · Framer Motion 11 · TypeScript.
 
-### 📱 Mobile Optimizations
-- Touch-friendly navigation
-- Optimized image loading and display
-- Mobile-first responsive design
-- Smooth animations and transitions
-
-### 🎨 Design Features
-- Custom color scheme with purple accent colors
-- Framer Motion animations
-- Glass morphism effects
-- Professional typography
-- Dark theme design
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **Next.js 14** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **React Intersection Observer** - Viewport-based animations
-
-### Development Tools
-- **ESLint** - Code linting
-- **PostCSS** - CSS processing
-- **npm** - Package management
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/cameron-portfolio.git
-   cd cameron-portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-### Build for Production
+## Running it
 
 ```bash
-npm run build
-npm start
+npm install
+npm run dev
 ```
 
-## 📁 Project Structure
+`npm run build` produces the production bundle; every route is statically prerendered.
 
-```
-cameron-portfolio/
-├── app/                    # Next.js App Router pages
-│   ├── about/             # About page
-│   ├── contact/           # Contact page
-│   ├── portfolio/         # Portfolio gallery page
-│   ├── services/          # Services page
-│   ├── globals.css        # Global styles
-│   ├── layout.tsx         # Root layout
-│   └── page.tsx          # Home page
-├── components/            # Reusable React components
-│   ├── Footer.tsx         # Site footer
-│   ├── GalleryGrid.tsx    # Photo gallery grid
-│   ├── Hero.tsx           # Hero section
-│   ├── MobileMenu.tsx     # Mobile navigation
-│   ├── Navbar.tsx         # Navigation bar
-│   ├── ServicesList.tsx   # Services display
-│   └── TestimonialCarousel.tsx
-├── data/                  # Static data and content
-│   ├── about.ts           # About page content
-│   ├── photos.ts          # Photo gallery data
-│   ├── services.ts        # Services information
-│   └── testimonials.ts    # Client testimonials
-├── public/                # Static assets
-│   ├── photos/            # Photography portfolio images
-│   └── icons/             # Site icons and favicon
-└── ...config files
-```
+## Layout
 
-## 🎯 Key Pages
+| Path | What it holds |
+| --- | --- |
+| `app/` | Four routes — home, `/portfolio`, `/about`, `/contact` — plus the shared shell, `sitemap.ts` and `robots.ts` |
+| `components/` | Shell chrome (sidebar, mobile bars, intro, transitions) and the page sections |
+| `data/photos.ts` | The 67-frame gallery inventory and the five categories; counts derive from it |
+| `data/content.ts` | Copy, packages, testimonials, form options |
+| `data/photo-meta.json` | Generated intrinsic dimensions — do not hand-edit |
+| `scripts/build-photos.mjs` | Regenerates the responsive derivatives |
+| `public/photos/` | Three WebP widths plus a JPEG fallback per photo |
+| `public/film/ceremony.mp4` | The stitched ceremony film |
 
-### Home Page
-- Hero section with animated elements
-- Featured photography gallery
-- Services overview
-- Client testimonials
-- About section with contact information
+## Desktop and mobile are separate designs
 
-### Portfolio
-- Complete photo gallery
-- Responsive grid layout
-- Lightbox image viewer
-- Mobile-optimized display
+The mobile experience is not a reflow — no sidebar, a sticky top bar and a fixed bottom
+tab bar, and swipe-first content. The two are selected by real media queries at the `lg`
+breakpoint (1024px); structurally different blocks render as `lg:hidden` /
+`hidden lg:block`. Lazy loading keeps the hidden branch from fetching images.
 
-### Services
-- Detailed service packages
-- Pricing information
-- Feature comparisons
-- Contact call-to-actions
+## Assets
 
-### About
-- Photographer bio and story
-- Professional experience
-- Contact information
-- Social media links
+Photographs are committed as derivatives, not originals. To regenerate them from a
+directory of source JPEGs:
 
-### Contact
-- Interactive contact form
-- Contact information
-- Location details
-- Social media links
-
-## 📸 Adding New Photos
-
-1. Add images to `public/photos/` directory
-2. Update `data/photos.ts` with new photo entries:
-
-```typescript
-{
-  id: 'unique-id',
-  src: '/photos/your-image.jpg',
-  alt: 'Description of photo',
-  category: 'portrait', // or 'landscape', 'event', etc.
-  featured: false // set to true for homepage display
-}
+```bash
+node scripts/build-photos.mjs "<dir containing photos/>"
 ```
 
-## 🔧 Customization
+That writes `public/photos/<name>-{400,800,1400}.webp`, a 1400px JPEG fallback, and
+`data/photo-meta.json`. Every `<img>` carries intrinsic `width`/`height` from that file,
+so the masonry never shifts as photos arrive.
 
-### Colors
-Update the color scheme in `tailwind.config.js`:
+The film is one silent, stitched MP4 (1280×720, ~38 MB). It is served with
+`preload="none"` and only starts playing once the stage scrolls into view, so visitors
+who never reach it pay nothing for it. It runs on a plain loop — there is no crossfade
+machinery.
 
-```javascript
-colors: {
-  purple55: '#8B5CF6',  // Primary purple
-  dark03: '#0F0F0F',    // Dark backgrounds
-  // ... other colors
-}
-```
+## Booking form
 
-### Content
-- **About information**: Edit `data/about.ts`
-- **Services**: Modify `data/services.ts`
-- **Testimonials**: Update `data/testimonials.ts`
-
-### Styling
-- Global styles: `app/globals.css`
-- Component-specific styles: Individual component files
-- Tailwind utilities: Used throughout components
-
-## 🌐 Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Vercel will automatically build and deploy
-3. Configure domain if needed
-
-### Other Platforms
-The project can be deployed to any platform that supports Next.js:
-- Netlify
-- Railway
-- AWS Amplify
-- DigitalOcean App Platform
-
-## 📱 Mobile Features
-
-- **Responsive Navigation** - Hamburger menu with smooth animations
-- **Touch Optimizations** - Optimized for touch interactions
-- **Image Loading** - Progressive loading with blur placeholders
-- **Performance** - Optimized bundle size and lazy loading
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-**Cameron Fitzsimmons - FlickzWithFitz**
-- Email: flickzwithfitz@outlook.com
-- Instagram: [@flickzwithfitz](https://www.instagram.com/flickzwithfitz/?utm_source=ig_web_button_share_sheet)
-
-## 🙏 Acknowledgments
-
-- Built with Next.js and modern web technologies
-- Design inspired by contemporary photography portfolio trends
-- Optimized for performance and accessibility
-- Icons and animations from various open-source libraries
-
----
-
-**⭐ If you found this project helpful, please consider giving it a star!** 
+`components/ContactForm.tsx` posts to Formspree (`f/mblkgqkz`, carried over from the
+previous site). It validates a name, a well-formed email, and a date that is not in the
+past before sending, and falls back to a mailto prompt if the request fails.
