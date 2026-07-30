@@ -4,7 +4,8 @@ import CtaPanel from '@/components/CtaPanel';
 import Film from '@/components/Film';
 import Marquee from '@/components/Marquee';
 import MobileCarousel from '@/components/MobileCarousel';
-import Packages from '@/components/Packages';
+import Faq from '@/components/Faq';
+import Services from '@/components/Services';
 import Photo from '@/components/Photo';
 import { Drift, Parallax, PinnedStatement } from '@/components/Scroll';
 import Testimonials from '@/components/Testimonials';
@@ -223,18 +224,8 @@ export default function HomePage() {
             CEREMONY / V1
           </span>
         </div>
-        <div className="hidden lg:block lg:mt-5">
-          <Film
-            aspect="16/9"
-            labelInset={{ left: 22, bottom: 20, size: 10, tracking: '.2em' }}
-          />
-        </div>
-        <div className="lg:hidden">
-          <Film
-            aspect="9/13"
-            labelInset={{ left: 16, bottom: 16, size: 9, tracking: '.18em' }}
-          />
-        </div>
+        {/* One stage at both widths — a second, hidden <video> was needless. */}
+        <Film className="lg:mt-5" />
       </section>
 
       {/* --------------------------------------- desktop: category index --- */}
@@ -244,7 +235,8 @@ export default function HomePage() {
 
       <Marquee />
       <Testimonials />
-      <Packages />
+      <Services />
+      <Faq />
       <CtaPanel lines={["Let's get your", 'date down.']} />
     </>
   );
